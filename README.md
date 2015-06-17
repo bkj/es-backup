@@ -1,4 +1,8 @@
-Simple wrapper for elasticsearch-aws-cloud
+Simple wrapper for "elasticsearch-cloud-aws"
+
+Need to install 'elasticsearch-cloud-aws':
+
+		bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.6.0
 
 - s3_backup (should work)
 	
