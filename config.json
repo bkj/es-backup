@@ -1,0 +1,19 @@
+
+{
+	"ES_HOST"      : "localhost",
+	"ES_PORT"      : 9200,	
+	"CLUSTER_NAME" : "cluster1",
+	"INDICES"      : "",
+
+	"REPO_NAME" : "<repo-name>",
+	"REPO_DEF" : {
+	  "type": "s3",
+	  "settings": {
+	    "bucket": "<bucket-name>",
+	    "secret_key" : "<secret-key>",
+	    "access_key" : "<access-key>"
+	  }
+	},
+	
+	"N_DAYS" : 30
+}
