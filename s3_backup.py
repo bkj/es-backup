@@ -10,14 +10,15 @@ from elasticsearch.client import SnapshotClient
 def timestamp():
 	return datetime.strftime(datetime.now(), '%Y%m%d%H%M%S')
 
-with open('config.json', 'rb') as f:
+with open('config-private.json', 'rb') as f:
 	config = json.load(f)
 
-client = Elasticsearch([{'host' : config['ES_HOST'], 'port' : config['ES_PORT']}])
+client = Elasticsearch([{'host' : config['ES_HOST'], 'port' : config['ES_PORT']}], timeout = 20)
 sc     = SnapshotClient(client)
 
 # Can do this repeatedly
-sc.create_repository(config['REPO_NAME'], config['REPO_DEF'])
+# 
+# sc.create_repository(config['REPO_NAME'], config['REPO_DEF'])
 
 # Restrict to certain indices, if necessary
 body = {}
