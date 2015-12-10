@@ -4,7 +4,6 @@
 import argparse
 import json
 from datetime import datetime
-import elasticsearch
 from elasticsearch import Elasticsearch
 from elasticsearch.client import SnapshotClient
 
@@ -14,11 +13,6 @@ from elasticsearch.client import SnapshotClient
 parser = argparse.ArgumentParser()
 parser.add_argument('--create', dest = 'create', action="store_true")
 args = parser.parse_args()
-
-# --
-
-def timestamp():
-	return datetime.strftime(datetime.now(), '%Y%m%d%H%M%S')
 
 # --
 # Config
@@ -46,7 +40,7 @@ if config['INDICES'] != '':
 print 'starting backup...'
 res = sc.create(
 	repository          = config['REPO_NAME'], 
-	snapshot            = config['CLUSTER_NAME'] + '_' + timestamp(), 
+	snapshot            = config['CLUSTER_NAME'] + '_' + datetime.strftime(datetime.now(), '%Y%m%d%H%M%S'), 
 	body                = body,
 	wait_for_completion = False
 )
