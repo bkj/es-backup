@@ -1,19 +1,17 @@
 
 {
-	"ES_HOST"      : "localhost",
-	"ES_PORT"      : 9200,	
-	"CLUSTER_NAME" : "cluster1",
-	"INDICES"      : "",
+    "REPO_NAME"   : "s3_repo",
+    "REPO_DEF"    : {
+      "type": "s3",
+      "settings": {
+        "bucket"     : "phronesis-elasticsearch-backups",
+      }
+    },
+    
+    "N_DAYS"      : 30,
 
-	"REPO_NAME" : "<repo-name>",
-	"REPO_DEF" : {
-	  "type": "s3",
-	  "settings": {
-	    "bucket": "<bucket-name>",
-	    "secret_key" : "<secret-key>",
-	    "access_key" : "<access-key>"
-	  }
-	},
-	
-	"N_DAYS" : 30
+    "ES_HOST"      : "localhost",
+    "ES_PORT"      : 9210,  
+    "CLUSTER_NAME" : "cluster_geofin",
+    "INDICES"      : "dddemo_index"
 }
