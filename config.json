@@ -4,12 +4,10 @@
     "REPO_DEF"    : {
       "type": "s3",
       "settings": {
-        "bucket"     : "phronesis-elasticsearch-backups",
+        "bucket" : "phronesis-elasticsearch-backups"
       }
     },
-    
-    "N_DAYS"      : 30,
-
+    "N_DAYS"       : 30,
     "ES_HOST"      : "localhost",
     "ES_PORT"      : 9210,  
     "CLUSTER_NAME" : "cluster_geofin",
