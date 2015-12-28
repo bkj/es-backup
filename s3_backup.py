@@ -1,5 +1,10 @@
 # Installing plugin:
-# bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.6.0
+# 
+# 1.X
+#   bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.6.0
+#
+# 2.X
+#   sudo bin/plugin install cloud-aws
 
 import argparse
 import json
