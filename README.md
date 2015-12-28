@@ -26,3 +26,10 @@ Needs to look like
 
 Make the appropriate changes, i.e. point at S3, point at Elasticsearch, whitelist indices, etc.
 
+
+## Use
+
+`s3_backup`
+
+`s3_restore`
+
