@@ -31,5 +31,14 @@ Make the appropriate changes, i.e. point at S3, point at Elasticsearch, whitelis
 
 `s3_backup`
 
-`s3_restore`
+        # 1st time   (create snapshot in ES)
+        python s3_backup.py --create
 
+        # > 1st time (use existing snapshot in ES) 
+        python s3_backup.py
+
+`s3_restore` - Restore from previous backup in `config['REPO_NAME']`
+
+        python s3_restore.py --indices=index1,index2 --snapshot=snapshot_name
+
+`dev` - ignore for now
