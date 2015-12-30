@@ -2,7 +2,7 @@
 import argparse
 import json
 from elasticsearch import Elasticsearch
-from elasticsearch.client import SnapshotClient
+from elasticsearch.client import SnapshotClient, IndicesClient
 
 # --
 # CLI
@@ -23,10 +23,15 @@ config_private = json.load(open('config-private.json'))
 
 client = Elasticsearch([{'host' : config['ES_HOST'], 'port' : config['ES_PORT']}], timeout = 20)
 sc     = SnapshotClient(client)
+ic     = IndicesClient(client)
 
-sc.restore(
+ic.close(index = args.indices)
+
+_ = sc.restore(
     repository          = config['REPO_NAME'],
     snapshot            = args.snapshot,
     body                = {"indices" : args.indices},
-    wait_for_completion = False    
+    wait_for_completion = True
 )
+
+ic.open(index = args.indices)
