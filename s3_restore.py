@@ -25,13 +25,16 @@ client = Elasticsearch([{'host' : config['ES_HOST'], 'port' : config['ES_PORT']}
 sc     = SnapshotClient(client)
 ic     = IndicesClient(client)
 
-ic.close(index = args.indices)
+try:
+    ic.close(index = args.indices)
+except:
+    print '! could not close index'
 
 _ = sc.restore(
     repository          = config['REPO_NAME'],
     snapshot            = args.snapshot,
     body                = {"indices" : args.indices},
-    wait_for_completion = True
+    wait_for_completion = False
 )
 
 ic.open(index = args.indices)
