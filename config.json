@@ -9,7 +9,7 @@
     },
     "N_DAYS"       : 30,
     "ES_HOST"      : "localhost",
-    "ES_PORT"      : 9210,  
-    "CLUSTER_NAME" : "cluster_geofin",
-    "INDICES"      : "dddemo_index"
+    "ES_PORT"      : 9205,  
+    "CLUSTER_NAME" : "cluster-ernest-2.2.1",
+    "INDICES"      : ""
 }
