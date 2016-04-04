@@ -8,7 +8,8 @@ from elasticsearch.client import SnapshotClient
 # CLI
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--create', dest = 'create', action="store_true")
+parser.add_argument('--create', action="store_true")
+parser.add_argument('--no-snapshot', action="store_true")
 args = parser.parse_args()
 
 # --
@@ -23,7 +24,7 @@ config['REPO_DEF']['settings']['secret_key'] = config_private['secret_key']
 # --
 # Run
 
-client = Elasticsearch([{'host' : config['ES_HOST'], 'port' : config['ES_PORT']}], timeout = 20)
+client = Elasticsearch([{'host' : config['ES_HOST'], 'port' : config['ES_PORT']}], timeout = 30)
 sc     = SnapshotClient(client)
 
 if args.create:
@@ -33,11 +34,11 @@ body = {}
 if config['INDICES'] != '':
 	body['indices'] = config['INDICES']
 
-
 print 'starting backup...'
-res = sc.create(
-	repository          = config['REPO_NAME'], 
-	snapshot            = config['CLUSTER_NAME'] + '_' + datetime.strftime(datetime.now(), '%Y%m%d%H%M%S'), 
-	body                = body,
-	wait_for_completion = False
-)
+if not args.no_snapshot:
+    res = sc.create(
+    	repository          = config['REPO_NAME'], 
+    	snapshot            = config['CLUSTER_NAME'] + '_' + datetime.strftime(datetime.now(), '%Y%m%d%H%M%S'), 
+    	body                = body,
+    	wait_for_completion = False
+    )

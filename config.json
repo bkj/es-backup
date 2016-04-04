@@ -4,12 +4,11 @@
     "REPO_DEF"    : {
       "type": "s3",
       "settings": {
-        "bucket" : "phronesis-elasticsearch-backups"
+        "bucket" : "my_bucket"
       }
     },
     "N_DAYS"       : 30,
     "ES_HOST"      : "localhost",
     "ES_PORT"      : 9205,  
-    "CLUSTER_NAME" : "cluster-ernest-2.2.1",
     "INDICES"      : ""
 }

@@ -26,15 +26,15 @@ sc     = SnapshotClient(client)
 ic     = IndicesClient(client)
 
 try:
-	ic.close(index = args.indices)
+    ic.close(index = args.indices)
 except:
-	print 'cannot close index:%s' % ' '.join(args.indices)
+    print '! could not close index'
 
 _ = sc.restore(
     repository          = config['REPO_NAME'],
     snapshot            = args.snapshot,
     body                = {"indices" : args.indices},
-    wait_for_completion = True
+    wait_for_completion = False
 )
 
 ic.open(index = args.indices)
