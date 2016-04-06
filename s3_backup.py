@@ -28,17 +28,21 @@ client = Elasticsearch([{'host' : config['ES_HOST'], 'port' : config['ES_PORT']}
 sc     = SnapshotClient(client)
 
 if args.create:
+    print "creating repo: %s" % config['REPO_NAME'] 
     sc.create_repository(config['REPO_NAME'], config['REPO_DEF'])
-
+    
 body = {}
 if config['INDICES'] != '':
 	body['indices'] = config['INDICES']
 
-print 'starting backup...'
 if not args.no_snapshot:
+    snapshot_name = config['CLUSTER_NAME'] + '_' + datetime.strftime(datetime.now(), '%Y%m%d%H%M%S'),
+    print "creating snapshot : %s" % snapshot_name
     res = sc.create(
     	repository          = config['REPO_NAME'], 
-    	snapshot            = config['CLUSTER_NAME'] + '_' + datetime.strftime(datetime.now(), '%Y%m%d%H%M%S'), 
+    	snapshot            = snapshot_name, 
     	body                = body,
     	wait_for_completion = False
     )
+else:
+    print "skipping snapshot"
