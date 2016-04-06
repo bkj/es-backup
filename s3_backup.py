@@ -1,5 +1,5 @@
-import argparse
 import json
+import argparse
 from datetime import datetime
 from elasticsearch import Elasticsearch
 from elasticsearch.client import SnapshotClient
