@@ -34,7 +34,7 @@ _ = sc.restore(
     repository          = config['REPO_NAME'],
     snapshot            = args.snapshot,
     body                = {"indices" : args.indices},
-    wait_for_completion = False
+    wait_for_completion = True
 )
 
 ic.open(index = args.indices)
